@@ -5,6 +5,7 @@ def density_scoring_function(sub_graph):
 
 # order the vertex by pagerank
 def page_rank_ordering(graph):
+    
     vertices_dict = nx.pagerank(graph)
     sorted_vertices_tuple = tuple(sorted(vertices_dict.items(),key=lambda x:x[1], reverse=True))
     sorted_vertices_list = []
@@ -13,12 +14,13 @@ def page_rank_ordering(graph):
 
 
 def Link_Aggregate_Algorithm(G):
+
     output_clusters = []
     page_rank_vertices = page_rank_ordering(G)
     # Iterate through each vertex
     for vertex in page_rank_vertices:
         is_vertex_added = False
-		# Iterate through all existing cluster to search if current vertex belongs to one of them
+        # Iterate through all existing cluster to search if current vertex belongs to one of them
         for cluster in output_clusters:
             
             cluster_weight = density_scoring_function(G.subgraph(cluster))
@@ -31,9 +33,9 @@ def Link_Aggregate_Algorithm(G):
             if updated_cluster_weight > cluster_weight:
                 cluster.append(vertex)
                 is_vertex_added = True
-		# If the vertex doesn't belong to one of the existing cluster, create a new cluster
+        # If this vertex doesn't belong to any of the communities, we have to create a new one
         if not is_vertex_added:
             output_clusters.append([vertex])
-	# Return a list of cluster 
+    
     return output_clusters
 
