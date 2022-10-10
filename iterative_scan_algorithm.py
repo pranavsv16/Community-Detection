@@ -3,15 +3,15 @@ import link_aggregate_algorithm as laa
 
 convergence_threshold=0.0001
 
-# This method implements the iterative scane algorithm as mentioned in the paper
+# This method implements the iterative scan algorithm as mentioned in the paper
 def iterative_scan(cluster,graph):
 	
 	cluster_subgraph = graph.subgraph(cluster)
 	
 	community_density = laa.density_scoring_function(cluster_subgraph)
-	is_density_imporved = False
+	is_density_improved = False
 	
-	while not is_density_imporved:
+	while not is_density_improved:
 		N_set = list(cluster_subgraph.nodes)
 		
 		for vertex in cluster_subgraph.nodes:
@@ -38,8 +38,8 @@ def iterative_scan(cluster,graph):
 		modified_community_density = laa.density_scoring_function(cluster_subgraph)
 		# If the new communication density does not increase based on a threshold, then it is converge.
 		if abs(modified_community_density-community_density) < convergence_threshold:
-			is_density_imporved = True
+			is_density_improved = True
 		else:
 			community_density = modified_community_density
-	# return new communties
+	# return new communities
 	return list(cluster_subgraph.nodes)

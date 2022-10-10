@@ -25,10 +25,10 @@ def Link_Aggregate_Algorithm(G):
             
             cluster_weight = density_scoring_function(G.subgraph(cluster))
             
-            upated_cluster = cluster.copy()
-            upated_cluster.append(vertex)
+            updated_cluster = cluster.copy()
+            updated_cluster.append(vertex)
             
-            updated_cluster_weight = density_scoring_function(G.subgraph(upated_cluster))
+            updated_cluster_weight = density_scoring_function(G.subgraph(updated_cluster))
             
             if updated_cluster_weight > cluster_weight:
                 cluster.append(vertex)
