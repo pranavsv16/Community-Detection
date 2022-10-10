@@ -4,7 +4,7 @@
 In this Project, we have implemented the Link Aggregate algorithm (LA) and the Improved Iterative Scan algorithm (IS2), which are presented in the paper "Efficient Identification of Overlapping Communities."
 
 ## Environment
-This project has been tested on `CSC591_ADBI_v3` VCL environment provided by the University and on a local environment with Python version 3.8 installed.
+This project has been tested on a local environment with Python version 3.8 installed.
 
 ## Required packages
 `networkx`  
