@@ -246,7 +246,8 @@ allCohesive = 0.0
 allSep = 0.0
 
 loop_count = 1
-median_degree = numpy.median(graphObj.degree(graphObj.nodes()).values()) # used for FOMD metric
+degree_values = [v for k, v in graphObj.degree(graphObj.nodes())]
+median_degree = numpy.median(degree_values) # used for FOMD metric
 start = time.time()
 for i in range(len(foundClusters)):
     """ Print Status """
@@ -274,7 +275,7 @@ for i in range(len(foundClusters)):
     for j in range(vCount):
         v = vertexList[j]
         inner_edges[j] = len(set(graphObj.neighbors(v)) & set(vertexList))
-        neighbors[j] = len(graphObj.neighbors(v))
+        neighbors[j] = len(list(graphObj.neighbors(v)))
     
     ms = float(len(commSubgraph.edges()))  # edges inside the subgraph
     cs = 0.0    # edges with one vertex outside of the subgraph
@@ -285,10 +286,10 @@ for i in range(len(foundClusters)):
     """ Density """
     if vCount>1:
         singleDensity = nx.density(commSubgraph)
-    	allDensity += singleDensity
+        allDensity += singleDensity
     else:
         singleDensity = 1
-    	allDensity = allDensity+1
+        allDensity = allDensity+1
 
 
     """ Clustering Coefficient """
