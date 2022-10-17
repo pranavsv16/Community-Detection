@@ -34,7 +34,7 @@ def iterative_scan(cluster,graph):
 			if new_community_density > cur_community_density:
 				cluster_subgraph = new_community.copy()
 		modified_community_density = laa.density_scoring_function(cluster_subgraph)
-		# If the new communication density does not increase based on a threshold, then it is converge.
+		# If the new community density does not increase based on a threshold, then it converges.
 		if abs(modified_community_density-community_density) < convergence_threshold:
 			is_density_improved = True
 		else:
