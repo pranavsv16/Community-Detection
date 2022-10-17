@@ -45,6 +45,23 @@ The output for `youtube.graph.small` data will be like this,
 187 1398 1399
 44 57 58 434
 ```
+## Metrics Evaluation
+
+To run this code, execute:``` python metrics.py <graph_file> <groundtruth_file> <communities_file> <output_file>```
+
+where:
+
+   	<graph_file> the file containing the edge list of the graph,
+    
+   	<groundtruth_file> is the file containing the ground truth communities,
+    
+    <communities_file> is the file containing the communities identified with the community detection algorithm
+    
+    <output_file> is the file prefix for the metrics results (two files will be created <output_file>.pmetrics.csv and <output_file>.gmetrics.csv
+ 
+For analysis, Amazon-large, DBLP-Medium and YouTube-Small graphs are considered and goodness and performance metrics is evaluated.
+
+For simplicity, the corresponding files for above graphs are placed in the metrics_code folder in amazon, dblp and youtube folders.
 
 ## Project Members:
 Venkata Pranav Singaraju (pvsingar)  
